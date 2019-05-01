@@ -5,17 +5,21 @@ class Node:
         self.right = right
 
 def serialize(tree):
-	if tree == None:
-		return None
-	nodeTuple = (tree.val, serialize(tree.left), serialize(tree.right))
-	return str(nodeTuple)
+    if tree == None:
+        return None
+    nodeTuple = (tree.val, serialize(tree.left), serialize(tree.right))
+    return str(nodeTuple)
 
 
 
 
 
 def deserialize(treeString):
-	return eval(treeString)
+    if (treeString == None):
+        return None
+    tup = eval(treeString)
+    node = Node(tup[0], deserialize(tup[1]), deserialize(tup[2]))
+    return node
 
 def test():
     node = Node('root', Node('left', Node('left.left')), Node('right'))
